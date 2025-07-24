@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../../utils/prismaClient.js";
 
 const updateReviewById = async (id, updatedData) => {
   const review = await prisma.review.update({

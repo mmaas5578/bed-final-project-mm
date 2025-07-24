@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const deleteReviewById = async (id) => {
-  const prisma = new PrismaClient();
   const review = await prisma.review.delete({
     where: { id },
   });

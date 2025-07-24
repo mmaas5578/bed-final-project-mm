@@ -9,8 +9,14 @@ const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const secretKey = process.env.AUTH_SECRET_KEY || "my-secret-key";
 
-  // Extract token
-  const token = authHeader?.split(" ")[1];
+  // Required: Authorization header needs to start with 'Bearer '
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res
+      .status(401)
+      .json({ message: "You cannot access this operation without a token!" });
+  }
+  // Remove token from header
+  const token = authHeader.slice(7).trim();
 
   if (!token) {
     return res

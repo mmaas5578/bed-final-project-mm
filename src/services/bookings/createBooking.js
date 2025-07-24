@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const createBooking = async (
   userId,
@@ -9,7 +9,6 @@ const createBooking = async (
   totalPrice,
   bookingStatus
 ) => {
-  const prisma = new PrismaClient();
   const booking = await prisma.booking.create({
     data: {
       userId,

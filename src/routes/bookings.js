@@ -23,7 +23,7 @@ router.get("/", async (req, res, next) => {
       // Check if userId exists in DB
       const userExists = await getUserById(userId);
       if (!userExists) {
-        return res.status(400).json({ error: "Invalid userId" });
+        return res.status(404).json({ error: "User not found" });
       }
 
       filters.userId = userId;

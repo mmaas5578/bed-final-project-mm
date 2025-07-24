@@ -61,6 +61,17 @@ router.post("/", async (req, res, next) => {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
+    // Check if host already exists (username or email)
+    const existingHost = await prisma.host.findFirst({
+      where: {
+        OR: [{ username: username }, { email: email }],
+      },
+    });
+
+    if (existingHost) {
+      return res.status(409).json({ error: "Host already exists" });
+    }
+
     const newHost = await createHost(
       username,
       password,

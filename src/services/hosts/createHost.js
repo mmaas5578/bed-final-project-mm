@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const createHost = async (
   username,
@@ -19,7 +19,6 @@ const createHost = async (
     aboutMe,
   };
 
-  const prisma = new PrismaClient();
   const host = await prisma.host.create({
     data: newHost,
   });

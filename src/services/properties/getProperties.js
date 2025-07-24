@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../../utils/prismaClient.js";
 
 const getProperties = async (filters = {}) => {
   return await prisma.property.findMany({

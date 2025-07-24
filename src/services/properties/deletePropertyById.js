@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const deletePropertyById = async (id) => {
-  const prisma = new PrismaClient();
   const property = await prisma.property.delete({
     where: { id },
   });

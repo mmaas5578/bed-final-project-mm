@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const createReview = async (userId, propertyId, rating, comment) => {
   const newReview = {
@@ -8,7 +8,6 @@ const createReview = async (userId, propertyId, rating, comment) => {
     comment,
   };
 
-  const prisma = new PrismaClient();
   const review = await prisma.review.create({
     data: newReview,
   });

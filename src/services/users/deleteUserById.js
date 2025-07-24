@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const deleteUserById = async (id) => {
-  const prisma = new PrismaClient();
   const user = await prisma.user.deleteMany({
     where: { id },
   });

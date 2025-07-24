@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const createProperty = async (
   hostId,
@@ -11,7 +11,6 @@ const createProperty = async (
   maxGuestCount,
   rating
 ) => {
-  const prisma = new PrismaClient();
   const property = await prisma.property.create({
     data: {
       hostId,

@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../utils/prismaClient.js";
 
 const getReviews = async () => {
-  const prisma = new PrismaClient();
   const reviews = await prisma.review.findMany();
   return reviews;
 };
